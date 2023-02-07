@@ -1,0 +1,29 @@
+{% extends "poll/base.html" %}
+{% block title %} Vote Guidelines {% endblock title %}
+
+{% block content %}
+
+        <p class="intro">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto a dignissimos unde modi aliquid, commodi, illum animi pariatur quae rem maxime nam atque perspiciatis id.</p>
+        <h2>Guidelines for voting</h2>
+        <p class="mb-10">Please ensure to follow these guidelines strictly so that your votes can be added to the db</p>
+        <ul>
+            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, ex.</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam nobis sequi in.</li>
+        </ul>
+        <div class="form-wrapper">
+        {% if messages %}
+	        {% for message in messages %}
+	            <p style="color: #fff; font-size: 14px; margin-bottom: 10px;">{{ message }}</p>
+	        {% endfor %}
+        {% endif %}
+            <form action="" id="login-form" method="post">
+            {% csrf_token %}
+                <div class="form-field">
+                    <input type="email" name="email" placeholder="Enter email.." required="" autocomplete="false">
+                    <button type="submit">Continue</button>
+                </div>
+            </form>
+        </div>
+        
+ {% endblock content %}

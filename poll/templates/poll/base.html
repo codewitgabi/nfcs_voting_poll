@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="{% static 'css/vote.css' %}">
+  <link rel="stylesheet" href="{% static 'css/result.css' %}">
+  <title>{% block title %} {% endblock title %}</title>
+</head>
+<body>
+    <!-- Start Nav -->
+    <nav>
+        <a href="{% url 'poll:index' %}">
+            <img src="{% static 'logo.png' %}" id="logo" alt="logo">
+        </a>
+        <span id="title">NFCS Voting Poll</span>
+    </nav>
+    <!-- End Nav -->
+    
+    <!-- Start Container -->
+    <div class="container">
+        {% block content %}
+        
+        {% endblock content %}
+    </div>
+    <!-- End Container -->
+    
+    <!-- Start Footer -->
+    <footer>
+        <div class="row">
+            <div class="col">
+                <div>
+                    <span>Designed by</span>
+                    <span>Gabriel Michael Ojomakpene</span>
+                </div>
+            </div>
+            <div class="col">
+                <div>
+                    <span>Contact Developer</span>
+                    <span>09020617734</span>
+                </div>
+            </div>
+        </div>
+        <div align="center" style="margin: 2em 0; font-size: 0.9rem;">&copy;2023</div>
+    </footer>
+    <!-- End Footer -->
+    
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+</html>
