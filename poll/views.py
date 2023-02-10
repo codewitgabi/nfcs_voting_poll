@@ -13,7 +13,7 @@ def add_voters_from_csv():
 	"""
 	BASE_DIR = settings.BASE_DIR
 	csv_file = os.path.join(BASE_DIR, "data.csv")
-	print(csv_file)
+	
 	with open(csv_file, "r") as file:
 		content = csv.reader(file)
 		for data in content:
@@ -25,7 +25,7 @@ def add_voters_from_csv():
 			except:
 				pass
 			
-# add_voters_from_csv()
+add_voters_from_csv()
 
 def index(request):
 	if request.method == "POST":
