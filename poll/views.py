@@ -25,7 +25,7 @@ def add_voters_from_csv():
 			except:
 				pass
 			
-add_voters_from_csv()
+# add_voters_from_csv()
 
 def index(request):
 	if request.method == "POST":
