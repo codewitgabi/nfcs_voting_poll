@@ -3,20 +3,43 @@ from .models import Contestant, Voter, Category, Vote
 from django.contrib import messages
 from django.http import HttpResponse
 from django.core.exceptions import ValidationError
+import csv
+from django.conf import settings
+import os
 
+def add_voters_from_csv():
+	"""
+	Add those who filled the biodata form to the list of voters.
+	"""
+	BASE_DIR = settings.BASE_DIR
+	csv_file = os.path.join(BASE_DIR, "data.csv")
+	print(csv_file)
+	with open(csv_file, "r") as file:
+		content = csv.reader(file)
+		for data in content:
+			name, email = data
+			try:
+				voter = Voter.objects.create(
+					name=name.strip(), email=email.strip())
+				voter.save()
+			except:
+				pass
+			
+add_voters_from_csv()
 
 def index(request):
 	if request.method == "POST":
 		email = request.POST.get("email")
 		try:
 			voter = Voter.objects.get(email= email)
+			print(voter.id)
 			if voter:
 				return redirect("poll:vote", id=voter.id)
 			messages.info("Seems you have already registered")
 			return redirect("poll:index")
 			
 		except Voter.DoesNotExist:
-			messages.error(request, "It seems you didnt complete the bio data form")
+			messages.error(request, "It seems you didn't complete the bio data form")
 			
 	return render(request, "poll/index.html")
 	
@@ -67,6 +90,8 @@ def vote(request, id):
 
 
 def result(request):
+	if not request.user.is_authenticated:
+		return redirect("poll:index")
 	categories = Category.objects.all()
 	context = {
 		"categories": categories,
