@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-9or6iitzyb9$&4qww)ty3k+f*9l@0nnic&uo4uga9eo$abhv*p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["web-production-2989.up.railway.app/"]
 
 
 # Application definition
@@ -139,7 +139,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CSRF_TRUSTED_ORIGINS = []
+CSRF_TRUSTED_ORIGINS = ["https://web-production-2989.up.railway.app/"]
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 CSRF_COOKIE_SECURE = True
