@@ -57,7 +57,7 @@ nav {
     display: flex;
     align-items: center;
 }
-.form-field input[type="email"] {
+.form-field input[type="text"] {
     width: 100%;
     padding: 10px;
     border: none;

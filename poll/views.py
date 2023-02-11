@@ -7,6 +7,7 @@ import csv
 from django.conf import settings
 import os
 
+
 def add_voters_from_csv():
 	"""
 	Add those who filled the biodata form to the list of voters.
@@ -17,10 +18,10 @@ def add_voters_from_csv():
 	with open(csv_file, "r") as file:
 		content = csv.reader(file)
 		for data in content:
-			name, email = data
+			name, phone = data
 			try:
 				voter = Voter.objects.create(
-					name=name.strip(), email=email.strip())
+					name=name.strip(), phone=phone.strip())
 				voter.save()
 			except:
 				pass
@@ -29,9 +30,9 @@ add_voters_from_csv()
 
 def index(request):
 	if request.method == "POST":
-		email = request.POST.get("email")
+		phone = request.POST.get("phone")
 		try:
-			voter = Voter.objects.get(email= email)
+			voter = Voter.objects.get(phone= phone)
 			print(voter.id)
 			if voter:
 				return redirect("poll:vote", id=voter.id)
@@ -90,6 +91,7 @@ def vote(request, id):
 
 
 def result(request):
+	""" Get results of the polling """
 	if not request.user.is_authenticated:
 		return redirect("poll:index")
 	categories = Category.objects.all()

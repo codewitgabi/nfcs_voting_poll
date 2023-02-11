@@ -10,8 +10,8 @@ class ContestantAdmin(admin.ModelAdmin):
 	
 @admin.register(Voter)
 class VoterAdmin(admin.ModelAdmin):
-	list_display = ("name", "email", "has_voted")
-	search_fields = ("name", "email")
+	list_display = ("name", "phone", "has_voted")
+	search_fields = ("name", "phone")
 	
 	
 @admin.register(Category)

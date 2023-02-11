@@ -20,11 +20,11 @@ class Voter(models.Model):
 		editable=False,
 		default=uuid.uuid4)
 	name = models.CharField(max_length=50)
-	email = models.EmailField(unique=True)
+	phone = models.CharField(max_length=11, unique=True)
 	has_voted = models.BooleanField(default=False)
 	
 	def __str__(self):
-		return self.email
+		return self.phone
 	
 	
 class Category(models.Model):
@@ -45,6 +45,6 @@ class Vote(models.Model):
 	
 	
 	def __str__(self):
-		return self.voter.email
+		return self.voter.phone
 		
 		
