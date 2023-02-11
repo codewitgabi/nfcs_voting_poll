@@ -27,7 +27,6 @@ nav {
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    background: red;
 }
 .container {
     margin: 1em 0.9em;
