@@ -100,4 +100,21 @@ def result(request):
 	}
 	return render(request, "poll/result.html", context)
 	
+
+def download_result(request):
+	response = HttpResponse(content_type= "text/plain")
+	response["Content-Disposition"] = "attachment; filename=result.txt"
 	
+	categories = Category.objects.all()
+	data = []
+	
+	for category in categories:
+		data.append(f"{category}\n\n")
+		for contestant in category.contestants.all():
+			v = Vote.objects.filter(category=category, contestant=contestant)
+			data.append(f"{contestant} {v.count()}\n")
+		data.append("\n\n")
+	
+	response.writelines(data)
+	return response
+		
