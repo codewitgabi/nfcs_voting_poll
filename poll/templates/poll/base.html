@@ -1,52 +1,55 @@
+<!doctype html>
 {% load static %}
-<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/index.css' %}">
-  <link rel="stylesheet" href="{% static 'css/vote.css' %}">
-  <link rel="stylesheet" href="{% static 'css/result.css' %}">
-  <title>{% block title %} {% endblock title %}</title>
-</head>
-<body>
-    <!-- Start Nav -->
-    <nav>
-        <a href="{% url 'poll:index' %}">
-            <img src="{% static 'logo.jpg' %}" id="logo" alt="logo">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <title>{% block title %} {% endblock %}</title>
+  </head>
+  <body>
+    <!-- Header Section -->
+
+    <header class="heading">
+      <nav class="nav">
+          <a href="{% url 'poll:index' %}">
+            <i class="logo">
+              <img src="{% static 'images/logo.jpg' %}" alt="logo" />
+            </i>
         </a>
-        <span id="title">NFCS Voting Poll</span>
-    </nav>
-    <!-- End Nav -->
-    
-    <!-- Start Container -->
-    <div class="container">
-        {% block content %}
-        
-        {% endblock content %}
-    </div>
-    <!-- End Container -->
-    
-    <!-- Start Footer -->
-    <footer>
-        <div class="row">
-            <div class="col">
-                <div>
-                    <span>Designed by</span>
-                    <span>Gabriel Michael Ojomakpene</span>
-                </div>
-            </div>
-            <div class="col">
-                <div>
-                    <span>Contact Developer</span>
-                    <span>09020617734</span>
-                </div>
-            </div>
+        <div class="nav-links">
+          <ul>
+            <a href="{% url 'poll:result' %}"
+              ><li>
+                <i class="bi bi-journal-text"></i>
+                <span>View Result</span>
+              </li>
+            </a>
+            <a href="{% url 'poll:download_result' %}"
+              ><li>
+                <i class="bi bi-download"></i>
+                <span>Download Result</span>
+              </li>
+            </a>
+          </ul>
         </div>
-        <div align="center" style="margin: 2em 0; font-size: 0.9rem;">&copy;2023</div>
+      </nav>
+    </header>
+
+    <!-- End Header Secion -->
+
+    {% block content %} {% endblock %}
+
+    <!-- Footer -->
+    <footer>
+      <span>Made with <i class="bi bi-heart-fill"></i> by codewitgabi</span>
     </footer>
     <!-- End Footer -->
-    
+
     <script src="{% static 'js/index.js' %}"></script>
-</body>
+  </body>
 </html>
