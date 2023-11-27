@@ -1,26 +1,42 @@
 {% extends "poll/base.html" %}
-{% block title %} Vote Guidelines {% endblock title %}
+{% block title %} Vote {% endblock title %}
 
 {% block content %}
 
-        <form action="" id="vote-form" method="post">
-        {% csrf_token %}
-        
-        {% for category in categories %}
-            <div class="category">
-                <legend class="cat-title">{{ category }}</legend>
-                <div class="cat-row">
-                {% for contestant in category.contestants.all %}
-	                <div class="cat-col">
-	                    <img src="{{ contestant.image.url }}" alt="contestant-img" class="contestant-img">
-	                    <legend class="contestant-name">{{ contestant }}</legend>
-	                    <input type="radio" name="{{ category }}" value="{{ contestant.id }}">
-	                </div>
-	            {% endfor %}
+
+    <!-- Poll Section -->
+    <section class="poll">
+      <div class="poll-form">
+        <form action="" id="poll-form" method="post">
+          {% csrf_token %}
+          
+          {% for category in categories %}
+          <div class="category">
+            <legend class="category-title">{{ category }}</legend>
+            <div class="contestants">
+              {% for contestant in category.contestants.all %}
+              <label for="{{ contestant.id }}" class="contestant">
+                <img src="{{ contestant.image.url }}" alt="contestant-image" />
+                <div class="flex mt-1">
+                  <input
+                    type="radio"
+                    id="{{ contestant.id }}"
+                    name="{{ category }}"
+                    value="{{ contestant.id }}"
+                  />
+                  <legend class="contestant-name">{{ contestant }}</legend>
                 </div>
+              </label>
+              {% endfor %}
             </div>
-            {% endfor %}
-            <button id="vote-btn">Vote</button>
+          </div>
+          {% endfor %}
+
+          <button id="submit-vote-btn">Submit Vote...</button>
         </form>
+      </div>
+    </section>
+    <!-- End Poll Section -->
+
   
 {% endblock content %}

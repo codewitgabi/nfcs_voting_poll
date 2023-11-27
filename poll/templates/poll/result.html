@@ -5,9 +5,9 @@
 
 
 {% block content %}
-
+  <div class="result-data">
     {% for category in categories %}
-        <div class="header">
+        <div class="result-list">
             <h2 class="result-title">{{ category }}</h2>
             <div class="table-row">
                 <div class="table-col">
@@ -27,5 +27,6 @@
 
     {% endfor %}
       <a href="{% url 'poll:download_result' %}">Download Result</a>
+      </div>
 
 {% endblock content %}
