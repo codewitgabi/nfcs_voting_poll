@@ -266,7 +266,6 @@ input[type="radio"]:checked:before {
 
 /* Responsive design */
 
-/*
 @media only screen and (min-width: 685px) {
   .nav {
     width: 600px;
@@ -277,4 +276,4 @@ input[type="radio"]:checked:before {
     margin: 5em auto;
   }
 }
-*/
+
