@@ -1,6 +1,9 @@
 import os
 from django.conf import settings
 import csv
+import django
+
+django.setup()
 from .models import Voter
 
 
