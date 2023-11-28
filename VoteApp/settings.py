@@ -119,8 +119,11 @@ STATIC_URL = "/static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles", "static")
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+if DEBUG:
+    MEDIA_URL = "/media/"
+    MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+else:
+    DEFAULT_FILE_STORAGE = "cloudvault.cloud_storage.CloudinaryStorage"
 
 # Default primary key field type
 
@@ -138,5 +141,3 @@ CLOUDINARY = {
     "api_key": os.environ.get("CLOUDINARY_API_KEY"),
     "api_secret": os.environ.get("CLOUDINARY_API_SECRET"),
 }
-
-DEFAULT_FILE_STORAGE = "cloudvault.cloud_storage.CloudinaryStorage"
