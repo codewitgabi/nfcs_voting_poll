@@ -13,6 +13,7 @@ DEBUG = os.environ.get("DEBUG", "") != "False"
 
 ALLOWED_HOSTS = [
     "web-production-2989.up.railway.app",
+    "nfcs-poll.onrender.com",
     "localhost",
     ".vercel.app",
     ".now.sh",
@@ -20,6 +21,7 @@ ALLOWED_HOSTS = [
 
 CSRF_TRUSTED_ORIGINS = [
     "https://web-production-2989.up.railway.app",
+    "https://nfcs-poll.onrender.com"
 ]
 
 # Application definition
