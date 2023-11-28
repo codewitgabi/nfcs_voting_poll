@@ -15,12 +15,12 @@
             <legend class="category-title">{{ category }}</legend>
             <div class="contestants">
               {% for contestant in category.contestants.all %}
-              <label for="{{ contestant.id }}" class="contestant">
+              <label for="{{ category.id }}_{{ contestant.id }}" class="contestant">
                 <img src="{{ contestant.image.url }}" alt="contestant-image" />
                 <div class="flex mt-1">
                   <input
                     type="radio"
-                    id="{{ contestant.id }}"
+                    id="{{ category.id}}_{{ contestant.id }}"
                     name="{{ category }}"
                     value="{{ contestant.id }}"
                   />
