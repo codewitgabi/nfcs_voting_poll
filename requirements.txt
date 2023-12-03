@@ -6,4 +6,4 @@ Pillow
 dj_database_url
 #psycopg2-binary
 cloudvault==1.2
-django-jazzmin
+
