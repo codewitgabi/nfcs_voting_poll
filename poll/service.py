@@ -17,7 +17,7 @@ def add_voters_from_csv():
     with open(csv_file, "r") as file:
         content = csv.reader(file)
         for data in content:
-            name, phone = data[1], data[9]
+            name, phone = data
             try:
                 voter = Voter.objects.create(name=name.strip(), phone=phone.strip())
                 voter.save()
