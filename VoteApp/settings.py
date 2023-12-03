@@ -28,6 +28,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 INSTALLED_APPS = [
     "whitenoise.runserver_nostatic",
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -140,4 +141,62 @@ CLOUDINARY = {
     "cloud_name": os.environ.get("CLOUDINARY_CLOUD_NAME"),
     "api_key": os.environ.get("CLOUDINARY_API_KEY"),
     "api_secret": os.environ.get("CLOUDINARY_API_SECRET"),
+}
+
+# jazzmin settings
+
+JAZZMIN_SETTINGS = {
+    "site_title": "Nfcs Poll",
+    "site_header": "Nfcs Poll",
+    "site_logo": "images/logo.jpg",
+    "site_brand": "Nfcs Poll",
+    "login_logo": "images/logo.jpg",
+    "site_logo_classes": "circle",
+    "welcome_sign": "Welcome to Nfcs Poll",
+    "copyright": "codewitgabi",
+    "custom_css": "css/jazzmin.css",
+
+    # List of model admins to search from the search bar, search bar omitted if excluded
+    # If you want to use a single search field you dont need to use a list, you can use a simple string
+    "search_model": "poll.Contestant",
+
+    # Field name on user model that contains avatar ImageField/URLField/Charfield or a callable that receives the user
+    "user_avatar": None,
+
+    ############
+    # Top Menu #
+    ############
+
+    # Links to put along the top menu
+    "topmenu_links": [
+
+        # Url that gets reversed (Permissions can be added)
+        {"name": "Home",  "url": "admin:index", "permissions": ["auth.view_user"]},
+
+        # external url that opens in a new window (Permissions can be added)
+        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
+
+        # model admin to link to (Permissions checked against model)
+        {"model": "poll.Category"},
+
+        # App with dropdown menu to all its models pages (Permissions checked against models)
+        {"app": "books"},
+    ],
+
+    "usermenu_links": [
+        {"name": "Support", "url": "https://github.com/farridav/django-jazzmin/issues", "new_window": True},
+        {"model": "auth.user"}
+    ],
+
+    # Whether to display the side menu
+    "show_sidebar": True,
+
+    # Whether to aut expand the menu
+    "navigation_expanded": True,
+
+    # Hide these apps when generating side menu e.g (auth)
+    "hide_apps": [],
+
+    # Hide these models when generating side menu (e.g auth.user)
+    "hide_models": [],
 }
