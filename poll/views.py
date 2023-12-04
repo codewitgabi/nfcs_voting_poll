@@ -74,6 +74,9 @@ def result(request):
 
 
 def download_result(request):
+    if not request.user.is_authenticated:
+        return redirect("poll:index")
+
     response = HttpResponse(content_type="text/plain")
     response["Content-Disposition"] = "attachment; filename=result.txt"
 
