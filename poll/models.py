@@ -14,7 +14,7 @@ class Contestant(models.Model):
 class Voter(models.Model):
     id = models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4)
     name = models.CharField(max_length=50)
-    phone = models.CharField(max_length=11, unique=True)
+    phone = models.CharField(max_length=25, unique=True)
     has_voted = models.BooleanField(default=False)
 
     def __str__(self):
